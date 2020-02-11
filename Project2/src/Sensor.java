@@ -3,12 +3,21 @@ import java.util.*;
 public class Sensor {
 	private boolean working;
 	private boolean badData;
-	
-	private double voltage;
+
+	private double temperature;
 
 	public Sensor() {
 		working = true;
 		badData = false;
+	}
+
+	public double getTemp() {
+		if (working) {
+			return temperature;
+		} else if (badData) {
+			return temperature / 2;
+		}
+		return 0;
 	}
 
 	public boolean isWorking() {
