@@ -4,18 +4,23 @@ public class Sensor {
 	private boolean working;
 	private boolean badData;
 
-	private double temperature;
+	private double voltage;
 
 	public Sensor() {
 		working = true;
 		badData = false;
+		decideVolts();
+	}
+	
+	public void decideVolts() {
+		voltage = Math.random() * 40.0;
 	}
 
-	public double getTemp() {
+	public double getVolts() {
 		if (working) {
-			return temperature;
+			return voltage;
 		} else if (badData) {
-			return temperature / 2;
+			return voltage / 2;
 		}
 		return 0;
 	}
@@ -36,6 +41,7 @@ public class Sensor {
 		badData = newState;
 	}
 
+	@Override
 	public String toString() {
 		return "";
 	}
